@@ -1,0 +1,44 @@
+<!-- views/manager/monthlyReport.ejs -->
+<nav>
+  
+  <li><a href="/managers/dashboard">Home</a></li>
+  <li><a href="/managers/createOrder">Create Order</a></li>
+  <li><a href="/managers/customers">Customer List</a></li>
+ <li><a href="/managers/payments"> Payment List</a></li>
+<li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+<li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+</ul>
+</nav>
+
+<form action="/managers/logout" method="post">
+  <button type="submit">Logout</button>
+</form>
+<h1>Monthly Report</h1>
+
+<!-- Monthly Report Form -->
+<form action="/managers/monthlyReport1" method="post">
+  <label for="selectedMonth">Select Month:</label>
+  <select name="selectedMonth" required>
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+    <!-- Add other months as needed -->
+  </select>
+
+  <button type="submit">Generate Report</button>
+</form>
+
+<hr> <!-- Add a horizontal line to separate the form and the report -->
+
+<!-- views/monthlyReport.ejs -->
+

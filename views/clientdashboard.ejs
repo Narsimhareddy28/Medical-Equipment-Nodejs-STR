@@ -1,0 +1,102 @@
+<!-- views/client/dashboard.ejs -->
+<html>
+<head>
+  <title>Client Dashboard</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <h1>Welcome to the Client Dashboard!</h1>
+  <form action="/clients/logout" method="post">
+    <button type="submit">Logout</button>
+  </form>
+
+  <h2>Available Equipment</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Rent Price per Day</th>
+        <th>Quantity in Store</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% availableEquipment.forEach(equipment => { %>
+        <tr>
+          <td><%= equipment.name %></td>
+          <td><%= equipment.description %></td>
+          <td>$<%= parseFloat(equipment.rent_price_per_day).toFixed(2) %></td>
+          <td><%= equipment.quantity_in_store %></td>
+          <td>
+            <!-- Rent button -->
+            <a href="/clients/rent/<%= equipment.id %>">Rent</a>
+
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <!-- Display Unavailable Equipment -->
+  <h2>Unavailable Equipment</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th> Rental Price Per Day</th>
+
+        <th>Last Rental Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unavailableEquipment.forEach(equipment => { %>
+        <tr>
+          <td><%= equipment.name %></td>
+          <td><%= equipment.rent_price_per_day %></td>
+
+          <td><%= equipment.endDate ? new Date(equipment.endDate).toLocaleDateString() : 'N/A' %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <!-- Add your other dashboard content here -->
+  <h2>Order History</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Equipment Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Total Amount</th>
+        <th>Amount Paid</th>
+        <th> Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% orderHistory.forEach(order => { %>
+        <tr>
+          <td><%= order.orderId %></td>
+          <td><%= order.equipmentName %></td>
+          <td><%= order.startDate %></td>
+          <td><%= order.endDate %></td>
+          <td>$<%= order.totalAmount %></td>
+          <td>$<%= order.amountPaid %></td>
+          <td>
+            <!-- Edit button -->
+            <a href="/clients/order/edit/<%= order.orderId %>">Edit</a>
+            
+            <!-- Cancel button -->
+            <a href="/clients/order/cancel/<%= order.orderId %>">Cancel</a>
+            <a href="/clients/receipt/<%= order.orderId %>">View Receipt</a>
+
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- views/client/rentEquipment.ejs -->
+<html>
+<head>
+  <title>Rent Equipment</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+
+ 
+</head>
+<body>
+  <li><a href="/managers/dashboard">Home</a></li>
+
+  <h1>Rent Equipment</h1>
+
+  <h2>Equipment Details</h2>
+  <p><strong>Name:</strong> <%= equipmentDetails.name %></p>
+  <p><strong>Rent Price per Day:</strong> $<%= parseFloat(equipmentDetails.rent_price_per_day).toFixed(2) %></p>
+
+  <h2>Rental Information</h2>
+  <form action="/clients/rent/submit" method="post" oninput="updateTotalAmount()">
+    <input type="hidden" name="equipmentId" value="<%= equipmentDetails.id %>">
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" name="startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" name="endDate" required>
+
+    <h3>Total Amount: $<span id="totalAmount">0.00</span></h3>
+
+    <label for="amountPaid">Amount Paid:</label>
+    <input type="number" name="amountPaid" step="0.01" required>
+
+    <input type="submit" value="Rent">
+  </form>
+
+  <!-- Add your other content here -->
+  <script>
+    function updateTotalAmount() {
+      const quantity = parseInt(document.getElementsByName('quantity')[0].value);
+      const startDate = document.getElementsByName('startDate')[0].value;
+      const endDate = document.getElementsByName('endDate')[0].value;
+
+      if (!quantity || !startDate || !endDate) {
+        document.getElementById('totalAmount').textContent = '0.00';
+        return;
+      }
+
+      const rentPricePerDay = <%= parseFloat(equipmentDetails.rent_price_per_day).toFixed(2) %>;
+      const rentalDays = Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24));
+      const totalAmount = rentPricePerDay * rentalDays * quantity;
+
+      document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+    }
+  </script>
+</body>
+</html>

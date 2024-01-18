@@ -1,0 +1,48 @@
+<!-- views/manager/paymentsList.ejs -->
+<nav>
+    <li><a href="/managers/dashboard">Home</a></li>
+    <li><a href="/managers/createOrder">Create Order</a></li>
+    <li><a href="/managers/customers">Customer List</a></li>
+   <li><a href="/managers/payments"> Payment List</a></li>
+  <li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+  <li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+  </ul>
+</nav>
+<form action="/managers/logout" method="post">
+  <button type="submit">Logout</button>
+</form>
+<h1>Payments List</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Client ID</th>
+      <th>Client Name</th>
+      <th>Equipment ID</th>
+      <th>Equipment Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Total Amount</th>
+      <th>Paid Amount</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% payments.forEach(payment => { %>
+      <tr>
+        <td><%= payment.id %></td>
+        <td><%= payment.clientId %></td>
+        <td><%= payment.clientName %></td>
+        <td><%= payment.equipmentId %></td>
+        <td><%= payment.equipmentName %></td>
+        <td><%= payment.startDate.toLocaleDateString() %></td>
+        <td><%= payment.endDate.toLocaleDateString() %></td>
+        <td>$<%= payment.totalAmount %></td>
+        <td>$<%= payment.amountPaid %></td>
+        <td><%= payment.quantity %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

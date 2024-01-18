@@ -1,0 +1,42 @@
+<!-- views/updateequipment.ejs -->
+<html>
+<head>
+  <title>Update Equipment</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <nav>
+    <li>
+      <li><a href="/managers/dashboard">Home</a></li>
+      <li><a href="/managers/createOrder">Create Order</a></li>
+      <li><a href="/managers/customers">Customer List</a></li>
+     <li><a href="/managers/payments"> Payment List</a></li>
+    <li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+    <li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+    </ul>
+  </nav>
+  <h1>Update Equipment</h1>
+
+  <form action="/managers/equipment/update/<%= equipmentDetails.id %>" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="<%= equipmentDetails.name %>" required>
+
+    <label for="description">Description:</label>
+    <textarea name="description" required><%= equipmentDetails.description %></textarea>
+
+    <label for="rent_price_per_day">Rent Price per Day:</label>
+    <input type="number" name="rent_price_per_day" value="<%= equipmentDetails.rent_price_per_day %>" required>
+
+    <label for="supplier_id">supplier_id :</label>
+    <input type="number" name="supplier_id" value="<%= equipmentDetails.supplier_id %>" required>
+    <label for="">Quantity in Store:</label>
+    <input type="number" name="quantity_in_store" value="<%= equipmentDetails.quantity_in_store %>" required>
+
+    <input type="submit" value="Update">
+  </form>
+
+  <!-- Add your other content here -->
+
+</body>
+</html>

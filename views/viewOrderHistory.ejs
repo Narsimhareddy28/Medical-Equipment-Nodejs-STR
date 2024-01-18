@@ -1,0 +1,48 @@
+<!-- views/manager/viewOrderHistory.ejs -->
+
+<html>
+<head>
+  <title>Order History</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="/managers/dashboard">Home</a></li>
+          <li><a href="/managers/createOrder">Create Order</a></li>
+          <li><a href="/managers/customers">Customer List</a></li>
+        </ul>
+      </nav>
+  <h1>Order History</h1>
+
+  <h2>Client ID: <%= clientId %></h2>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Equipment ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Quantity</th>
+        <th>Amount Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orderHistory.forEach(order => { %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.equipment_id %></td>
+          <td><%= new Date(order.sdate).toLocaleDateString() %></td>
+          <td><%= new Date(order.edate).toLocaleDateString() %></td>
+          <td><%= order.quantity %></td>
+          <td>$<%= order.tprice %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <!-- Add your other content here -->
+
+</body>
+</html>

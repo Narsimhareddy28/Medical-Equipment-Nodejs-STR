@@ -1,0 +1,32 @@
+<!-- views/client/editOrder.ejs -->
+<html>
+<head>
+  <title>Edit Order</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <h1>Edit Order</h1>
+
+  <form action="/clients/order/update/<%= orderDetails.id %>" method="post">
+    <!-- Display order details and allow editing -->
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" value="<%= orderDetails.quantity %>" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" name="startDate" value="<%= orderDetails.startDate %>" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" name="endDate" value="<%= orderDetails.endDate %>" required>
+
+    <h3>Total Amount: $<span id="totalAmount"><%= orderDetails.totalAmount %></span></h3>
+
+    <label for="amountPaid">Amount Paid:</label>
+    <input type="number" name="amountPaid" step="0.01" value="<%= orderDetails.amountPaid %>" required>
+
+    <input type="submit" value="Update Order">
+  </form>
+
+  <!-- Add your other content here -->
+
+</body>
+</html>

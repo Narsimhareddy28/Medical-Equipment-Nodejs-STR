@@ -1,0 +1,48 @@
+<!-- views/manager/createOrderForm.ejs -->
+<nav>
+  
+    <li><a href="/managers/dashboard">Home</a></li>
+    <li><a href="/managers/createOrder">Create Order</a></li>
+    <li><a href="/managers/customers">Customer List</a></li>
+   <li><a href="/managers/payments"> Payment List</a></li>
+  <li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+  <li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+  </ul>
+</nav>
+<form action="/managers/logout" method="post">
+  <button type="submit">Logout</button>
+</form>
+<h1>Create Order</h1>
+
+<form action="/managers/createOrder" method="post">
+  <label for="client">Select Client:</label>
+  <select name="client" required>
+    <!-- Populate with client options -->
+    <% clients.forEach(client => { %>
+      <option value="<%= client.id %>"><%= client.name %></option>
+    <% }); %>
+  </select>
+
+  <label for="equipment">Select Equipment:</label>
+  <select name="equipment" required>
+    <!-- Populate with equipment options -->
+    <% equipment.forEach(item => { %>
+      <option value="<%= item.id %>" data-price="<%= item.rent_price_per_day %>"><%= item.name %></option>
+    <% }); %>
+  </select>
+
+  <label for="startDate">Start Date:</label>
+  <input type="date" name="startDate" required>
+
+  <label for="endDate">End Date:</label>
+  <input type="date" name="endDate" required>
+
+  <label for="quantity">Quantity:</label>
+  <input type="number" name="quantity" required>
+
+  <label for="amountPaid">Amount Paid:</label>
+  <input type="number" name="amountPaid" step="0.01" required>
+
+  <button type="submit">Submit Order</button>
+</form>

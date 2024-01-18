@@ -1,0 +1,35 @@
+<!-- views/manager/addEquipment.ejs -->
+<html>
+<head>
+  <title>Add Equipment</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <h1>Add New Equipment</h1>
+
+  <form action="/managers/equipment/add" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+
+    <label for="manufacturer">Manufacturer:</label>
+    <input type="text" name="manufacturer" required>
+
+    <label for="description">Description:</label>
+    <textarea name="description" required></textarea>
+
+    <label for="rent_price_per_day">Rent Price per Day:</label>
+    <input type="number" name="rent_price_per_day" step="0.01" required>
+
+    <label for="quantity_in_store">Quantity in Store:</label>
+    <input type="number" name="quantity_in_store" required>
+
+    <label for="supplier_id">Supplier ID:</label>
+    <input type="text" name="supplier_id" required>
+
+    <input type="submit" value="Add Equipment">
+  </form>
+
+  <!-- Add your other content here -->
+
+</body>
+</html>

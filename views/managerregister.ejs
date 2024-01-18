@@ -1,0 +1,30 @@
+<!-- views/manager/register.ejs -->
+<html>
+<head>
+  <title>Manager Registration</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <p><a href="/">Home</a></p>
+
+  <h1>Manager Registration</h1>
+
+  <!-- Registration form -->
+  <form action="/managers/register" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <!-- Add other registration fields as needed -->
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Already have an account? <a href="/managers/login">Login</a></p>
+</body>
+</html>

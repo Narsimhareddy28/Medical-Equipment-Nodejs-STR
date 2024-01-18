@@ -1,0 +1,24 @@
+<!-- views/manager/login.ejs -->
+<html>
+<head>
+  <title>Manager Login</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <h1>Manager Login</h1>
+    <p><a href="/">Home</a></p>
+
+  <!-- Login form -->
+  <form action="/managers/login" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <p>Don't have an account? <a href="/managers/register">Register</a></p>
+</body>
+</html>

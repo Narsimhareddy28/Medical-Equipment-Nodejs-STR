@@ -1,0 +1,90 @@
+<!-- views/manager/dashboard.ejs -->
+<html>
+<head>
+  <title>Manager Dashboard</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <h1>Welcome to the Manager Dashboard!</h1>
+  <nav>
+  
+      <li><a href="/managers/dashboard">Home</a></li>
+      <li><a href="/managers/createOrder">Create Order</a></li>
+      <li><a href="/managers/customers">Customer List</a></li>
+     <li><a href="/managers/payments"> Payment List</a></li>
+    <li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+    <li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+    </ul>
+  </nav>
+  <form action="/managers/logout" method="post">
+    <button type="submit">Logout</button>
+  </form>
+  <h2>All Equipment</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Rent Price per Day</th>
+        <th>Quantity in Store</th>
+        <th>Supplier Id</th>
+
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% allEquipment.forEach(equipment => { %>
+        <tr>
+          <td><%= equipment.id %></td>
+          <td><%= equipment.name %></td>
+          <td><%= equipment.description %></td>
+          <td>$<%= parseFloat(equipment.rent_price_per_day).toFixed(2) %></td>
+          <td><%= equipment.quantity_in_store %></td>
+          <td><%= equipment.supplier_id%></td>
+
+          <td>
+            <!-- Update button -->
+            <a href="/managers/equipment/update/<%= equipment.id %>">Update</a>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <h1>Add Equipment</h1>
+
+  
+  <form action="/managers/equipment/add" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+
+    <label for="manufacturer">Manufacturer:</label>
+    <input type="text" name="manufacturer" required>
+
+    <label for="description">Description:</label>
+    <textarea name="description" required></textarea>
+
+    <label for="rent_price_per_day">Rent Price per Day:</label>
+    <input type="number" name="rent_price_per_day" step="0.01" required>
+
+    <label for="quantity_in_store">Quantity in Store:</label>
+    <input type="number" name="quantity_in_store" required>
+
+    <label for="supplier_id">Supplier ID:</label>
+    <input type="text" name="supplier_id" required>
+
+    <input type="submit" value="Add Equipment">
+  </form>
+
+  <!-- Add your other dashboard content here -->
+  <a href="/managers/createOrder">Create Order</a>
+  <a href="/managers/customers"> Customer List</a>
+  <a href="/managers/payments"> Payment List</a>
+  <a href="/managers/pendingPayments"> Pending Payment List</a>
+  <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a>
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- views/manager/customersList.ejs -->
+<nav>
+    <li><a href="/managers/dashboard">Home</a></li>
+    <li><a href="/managers/createOrder">Create Order</a></li>
+    <li><a href="/managers/customers">Customer List</a></li>
+   <li><a href="/managers/payments"> Payment List</a></li>
+  <li>  <a href="/managers/pendingPayments"> Pending Payment List</a></li>
+  <li>    <a href="/managers/monthlyReportForm"> monthly profit  Payment report</a> </li>
+
+  </ul>
+</nav>
+<form action="/managers/logout" method="post">
+  <button type="submit">Logout</button>
+</form>
+<h1>Customers List</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>History</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.forEach(customer => { %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.address %></td>
+        <td>
+            <!-- Add a button/link to view order history -->
+            <a href="/managers/orderHistory/<%= customer.id %>">View Order History</a>
+          </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

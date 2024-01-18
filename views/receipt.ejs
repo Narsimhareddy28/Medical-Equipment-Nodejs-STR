@@ -1,0 +1,42 @@
+<!-- views/client/receipt.ejs -->
+<html>
+<head>
+  <title>Rental Receipt</title>
+  <!-- Add your stylesheets, scripts, and other head elements as needed -->
+</head>
+<body>
+  <li><a href="/clients/dashboard">Home</a></li>
+
+  <h1>Rental Receipt</h1>
+
+  <h2>Company Information</h2>
+  <p><strong>Name:</strong> <%= orderDetails.equipmentDetails.manufacturer %></p>
+  <p><strong>Address:</strong> saint charles, Missouri, US</p>
+
+  <h2>Order Details</h2>
+  <p><strong>Order ID:</strong> <%= orderDetails.id %></p>
+  <p><strong>Client ID:</strong> <%= clientDetails.id %></p>
+  <p><strong>Client Name:</strong> <%= clientDetails.name %></p>
+
+  <h2>Equipment Details</h2>
+  <p><strong>Equipment ID:</strong> <%= orderDetails.equipmentDetails.id %></p>
+  <p><strong>Equipment Name:</strong> <%= orderDetails.equipmentDetails.name %></p>
+  <p><strong>Equipment Description:</strong> <%= orderDetails.equipmentDetails.description %></p>
+  <p><strong>Equipment Manufacturer:</strong> <%= orderDetails.equipmentDetails.manufacturer %></p>
+
+  <h2>Rental Dates and Price</h2>
+  <p><strong>Start Date:</strong> <%= orderDetails.startDate %></p>
+  <p><strong>End Date:</strong> <%= orderDetails.endDate %></p>
+  <p><strong>Total Amount:</strong> $<%= orderDetails.totalAmount %></p>
+  <p><strong>Amount Paid:</strong> $<%= orderDetails.amountPaid %></p>
+  <p><strong>Pending Amount:</strong> $<%= orderDetails.pendingAmount %></p>
+
+  <h2>Payment Instructions</h2>
+  <p>Make the check payable to:</p>
+  <p><strong>Name:</strong> <%= orderDetails.equipmentDetails.manufacturer %></p>
+  <p>Write your Order ID on the memo line of the check. (Order ID: <%= orderDetails.id %>)</p>
+
+
+  <!-- Add your other content here -->
+</body>
+</html>

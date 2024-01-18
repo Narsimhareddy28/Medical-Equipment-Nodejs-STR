@@ -1,0 +1,25 @@
+<!-- views/login.ejs -->
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+<body>
+  <p><a href="/">Home</a></p>
+
+  <h1>Login Page</h1>
+  <!-- Your login form goes here -->
+  <form action="/clients/login" method="post">
+    <!-- Add your form fields (username, password, etc.) -->
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Login</button>
+    
+  </form>
+  <p>Don't have an account? <a href="/clients/register">Register</a></p>
+
+</body>
+</html>
